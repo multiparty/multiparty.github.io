@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="all" name="robots" />
+    <title>Applied MPC</title>
+    <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;base64,iVBORw0KGgo="><!-- Suppress browser favicon.ico request. -->
+    <style>
+      @font-face {
+        font-family: "Benton-Sans-Light";
+        src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Light/1d3e1be9-e2ca-44c3-b674-7228a7c97407-2.eot");
+        src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Light/1d3e1be9-e2ca-44c3-b674-7228a7c97407-2.eot?") format("embedded-opentype"),
+             url("https://www.bu.edu/cdn/fonts/Benton-Sans-Light/1d3e1be9-e2ca-44c3-b674-7228a7c97407-3.woff") format("woff"),
+             url("https://www.bu.edu/cdn/fonts/Benton-Sans-Light/1d3e1be9-e2ca-44c3-b674-7228a7c97407-1.ttf") format("truetype");
+        font-style: normal;
+        font-weight: normal;
+      }
+      @font-face {
+        font-family: "Benton-Sans-Regular";
+        src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Regular/019c3a13-b3d7-4c5a-be27-07a8334a43e6-2.eot");
+        src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Regular/019c3a13-b3d7-4c5a-be27-07a8334a43e6-2.eot?") format("embedded-opentype"),
+             url("https://www.bu.edu/cdn/fonts/Benton-Sans-Regular/019c3a13-b3d7-4c5a-be27-07a8334a43e6-3.woff") format("woff"),
+             url("https://www.bu.edu/cdn/fonts/Benton-Sans-Regular/019c3a13-b3d7-4c5a-be27-07a8334a43e6-1.ttf") format("truetype");
+        font-style: normal;
+        font-weight: normal;
+      }
+      @font-face {
+        font-family: "Benton-Sans-Bold";
+        src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Bold/d4a4a960-2cf2-430e-8b13-cbf6f261ddb9-2.eot");
+        src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Bold/d4a4a960-2cf2-430e-8b13-cbf6f261ddb9-2.eot?") format("embedded-opentype"),
+             url("https://www.bu.edu/cdn/fonts/Benton-Sans-Bold/d4a4a960-2cf2-430e-8b13-cbf6f261ddb9-3.woff") format("woff"),
+             url("https://www.bu.edu/cdn/fonts/Benton-Sans-Bold/d4a4a960-2cf2-430e-8b13-cbf6f261ddb9-1.ttf") format("truetype");
+        font-style: normal;
+        font-weight: normal;
+      }
+      @font-face {
+        font-family: "Veneer-Extras";
+        src: url("https://www.bu.edu/cdn/fonts/Veneer-Extras/2B35AA_1_0.eot");
+        src: url("https://www.bu.edu/cdn/fonts/Veneer-Extras/2B35AA_1_0.eot?") format("embedded-opentype"),
+             url("https://www.bu.edu/cdn/fonts/Veneer-Extras/2B35AA_1_0.woff") format("woff"),
+             url("https://www.bu.edu/cdn/fonts/Veneer-Extras/2B35AA_1_0.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 400;
+      }
+      html, body { height:100%; margin:0; color:#555555; font-family:Benton-Sans-Light,Helvetica,sans-serif; }
+      /* body { overflow:hidden; } */
+      body #background { position:absolute; top:0; left:0; right:0; bottom:0; width:auto; overflow:hidden; margin-bottom:0; padding:0; }
+      body #foreground { position:absolute; top:80px; z-index:100; width:100%; margin-left:0 auto; text-align:center; } 
+      body #foreground #title { width:900px; padding-bottom:5px; display:inline-block; text-align:left; font-size:36px; cursor:default; }
+      body #foreground #description { width:900px; padding-bottom:40px; display:inline-block; text-align:left; font-size:16px; cursor:default; }
+      body #foreground #sheet { margin:0 auto; padding-bottom:40px; border-top:0px solid #CCCCCC; border-bottom:0px solid #CCCCCC; color:#000000; background-color:white; }
+      body #foreground #sheet .section { width:900px; padding-top:0px; display:inline-block; text-align:left; font-family:Benton-Sans-Regular,Helvetica,sans-serif; font-size:14px; }
+      body #foreground #sheet .section table { width:100%; }
+      body #foreground #sheet .section h2 { color:#888888; font-family:Benton-Sans-Light,Helvetica,sans-serif; }
+      body #foreground #sheet .section ul { list-style:none; padding:0px; margin:0; }
+      body #foreground #sheet .section li { padding-left:1.5em; text-indent:-1em; }
+      body #foreground #sheet .section li:before { content:"-- "; color:#888888; font-family:"Arial",Sans-serif; }
+      body #foreground #sheet .section p { text-align:justify; }
+      body #foreground #sheet .section table { padding:5px; border-spacing:5px; font-size:12px; }
+      body #foreground #sheet .section table td { padding:2px 10px 10px 10px; }
+      body #foreground #sheet .section a { color:#4E759A; text-decoration:none; }
+      body #foreground #sheet .section a:hover { text-decoration:underline; }
+      body #foreground #footer { width:900px; height:0px; padding-top:15px; display:inline-block; text-align:left; font-family:Benton-Sans-Regular,Helvetica,sans-serif; font-size:12px; }
+      body #foreground #footer a { color:#FFFFFF; text-decoration:none; }
+      body #foreground #footer a:hover { text-decoration:underline; }
+    </style>
+    <base target="_parent">
+  </head>
+  <body>
+    <div id="foreground">
+      <div id="title">Accessible and Scalable<br/>Secure Multi-Party Computation</div>
+      <br/>
+      <div id="description">
+        We are developing accessible and scalable secure multi-party computation systems and applications. This page contains links to recent publications and other relevant articles.
+      </div>
+      <div id="sheet">
+        <br/>
+        <div class="section">
+          <h2>Publications</h2>
+          <table>
+            <tr>
+              <td>
+                <b>Maintaining Usability While Enhancing Security: Deploying A Web Service for Private Data Aggregation.</b>
+                <br/>Andrei Lapets, Nikolaj Volgushev, Azer Bestavros, Frederick Jansen, Mayank Varia, Rose Kelly, and Shannon Roberts.
+                <br/>Under review.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Scalable Secure Multi-Party Network Vulnerability Analysis via Symbolic Optimization.</b>
+                <br/>Kinan Dak Albab, Rawane Issa, Andrei Lapets, Azer Bestavros, and Nikolaj Volgushev.
+                <br/>To appear in Proceedings of WTMC 2017: The 2nd International Workshop on Traffic Measurements for Cybersecurity.
+                San Jose, California, USA. May 2017.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Design and Deployment of Usable, Scalable MPC.</b>
+                <br/>Azer Bestavros, Andrei Lapets, Frederick Jansen, Mayank Varia, Nikolaj Volgushev, Malte Schwarzkopf.
+                <br/>Presented at TPMPC 2017: Theory and Practice of Multi-Party Computation Workshop.
+                Bristol, UK. April 2017.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><a href="http://cacm.acm.org/magazines/2017/2/212427-user-centric-distributed-solutions-for-privacy-preserving-analytics/fulltext">User-Centric Distributed Solutions for Privacy-Preserving Analytics</a>.</b>
+                <br/>Azer Bestavros, Andrei Lapets, and Mayank Varia.
+                <br/><i>Communications of the ACM</i>, <b>60</b>(2):37-39, 2017.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><a href="http://www.cs.bu.edu/techreports/pdf/2016-008-mpc-lightweight-web-app.pdf">Secure Multi-Party Computation for Analytics Deployed as a Lightweight Web Application</a>.</b>
+                <br/>Andrei Lapets, Nikolaj Volgushev, Azer Bestavros, Frederick Jansen, and Mayank Varia.
+                <br/>Presented at IEEE SecDev 2016: Security Innovation in Design and Development.
+                Boston, MA, USA. November 2016.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><a href="http://eprint.iacr.org/2016/883.pdf">DEMO: Integrating MPC in Big Data Workflows</a>.</b>
+                <br/>Nikolaj Volgushev, Malte Schwarzkopf, Andrei Lapets, Mayank Varia, and Azer Bestavros.
+                <br/>Proceedings of CCS 2016: The 23rd ACM SIGSAC Conference on Computer and Communications Security.
+                Vienna, Austria. October 2016.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><a href="http://www.cs.bu.edu/techreports/pdf/2015-011-integrating-mpc-and-mr.pdf">Programming Support for an Integrated Multi-Party Computation and MapReduce Infrastructure</a>.</b>
+                <br/>Nikolaj Volgushev, Andrei Lapets, and Azer Bestavros.
+                <br/>Proceedings of HotWeb 2015: The Third IEEE Workshop on Hot Topics in Web Systems and Technologies.
+                Washington, D.C., USA. November 2015.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><a href="http://www.cs.bu.edu/techreports/pdf/2015-010-scather.pdf">Scather: Programming with Multi-party Computation and MapReduce</a>.</b>
+                <br/>Nikolaj Volgushev, Andrei Lapets, and Azer Bestavros.
+                <br/>Technical Report BUCS-TR-2015-010, CS Dept., Boston University, August 2015.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><a href="http://www.cs.bu.edu/techreports/pdf/2015-009-mpc-compensation.pdf">Web-based Multi-Party Computation with Application to Anonymous Aggregate Compensation Analytics</a>.</b>
+                <br/>Andrei Lapets, Eric Dunton, Kyle Holzinger, Frederick Jansen, and Azer Bestavros.
+                <br/>Technical Report BUCS-TR-2015-009, CS Dept., Boston University, August 2015.
+              </td>
+            </tr>
+          </table>
+        </div>
+        <br/>
+        <div class="section">
+          <a id="2016spring"></a>
+          <h2>Other Reports and Coverage</h2>
+          <table>
+            <tr>
+              <td>
+                <b><a href="http://www.bu.edu/today/2015/computational-thinking-breaks-a-logjam/">Computational Thinking Breaks a Logjam</a>.</b>
+                <br/>Rich Barlow. BU Today.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><a href="http://www.wbur.org/onpoint/2016/03/30/gender-gap-pay-gap-boston-amazon">Will Data Help Close the Gender Pay Gap?</a></b>
+                <br/>Tom Ashbrook. NPR OnPoint (radio show), WBUR 90.9.
+              </td>
+            </tr>
+          </table>
+        </div>
+        <br/>
+        <div class="section">
+          <a id="overview"></a>
+          <h2>Current and Past Collaborators</h2>
+          <table>
+            <tr>
+              <td>
+                <b>Azer Bestavros</b><br/>BU
+              </td>
+              <td>
+                <b>Kinan Dak Albab</b><br/>BU
+              </td>
+              <td>
+                <b>Eric Dunton</b><br/>BU
+              </td>
+              <td>
+                <b>Kyle Holzinger</b><br/>BU
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Rawane Issa</b><br/>BU
+              </td>
+              <td>
+                <b>Frederick Jansen</b><br/>BU
+              </td>
+              <td>
+                <b>Rose Kelly</b><br/>UMass
+              </td>
+              <td>
+                <b>Andrei Lapets</b><br/>BU
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Shannon Roberts</b><br/>UMass
+              </td>
+              <td>
+                <b>Malte Schwarzkopf</b><br/>MIT
+              </td>
+              <td>
+                <b>Mayank Varia</b><br/>BU
+              </td>
+              <td>
+                <b>Nikolaj Volgushev</b><br/>BU
+              </td>
+            </tr>
+          </table>
+        </div>
+        <br/>
+        <div class="section">
+          <a id="acknowledgments"></a>
+          <h2>Acknowledgments</h2>
+          <p>
+            This effort exists thanks to the support and cooperation of <a href="http://www.bu.edu">Boston University</a>, including the <a href="http://www.bu.edu/cs/">Department of Computer Science</a>, the <a href="http://www.bu.edu/hic">Hariri Institute for Computing</a>, the <a href="http://sail.bu.edu">Software &amp; Application Innovation Lab</a>, and the <a href="http://www.bu.edu/ioc/">Initiative on Cities</a>.
+          </p>
+          <p>
+            We also thank the <a href="https://www.boston.gov/">City of Boston</a> and the <a href="http://www.bostonwomensworkforcecouncil.com/">Boston Women's Workforce Council</a>.
+          </p>
+          <p>
+            This work is partially supported under the <a href="http://www.bu.edu/hic/research/scope/">SCOPE</a> effort by the National Science Foundation under Grant No. <a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1430145">1430145</a>. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+          </p>
+        </div>
+      </div><!-- /#sheet -->
+      <div id="footer">
+      </div><!-- /#footer -->
+    </div><!-- /#foreground -->
+  </body>
+</html>

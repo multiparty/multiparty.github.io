@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
     <meta content="all" name="robots" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Multi-Party Computation: Scalability and Accessibility">
+    <meta name="author" content="">
     <title>Multi-Party Computation: Scalability and Accessibility</title>
     <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;base64,iVBORw0KGgo="><!-- Suppress browser favicon.ico request. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+          crossorigin="anonymous">
     <style>
       @font-face {
         font-family: "Benton-Sans-Light";
@@ -43,183 +49,145 @@
         font-weight: 400;
       }
       html, body { height:100%; margin:0; color:#555555; font-family:Benton-Sans-Light,Helvetica,sans-serif; }
-      /* body { overflow:hidden; } */
-      body #background { position:absolute; top:0; left:0; right:0; bottom:0; width:auto; overflow:hidden; margin-bottom:0; padding:0; }
-      body #foreground { position:absolute; top:80px; z-index:100; width:100%; margin-left:0 auto; text-align:center; } 
-      body #foreground #title { width:900px; padding-bottom:5px; display:inline-block; text-align:left; font-size:36px; cursor:default; }
-      body #foreground #description { width:900px; padding-bottom:40px; display:inline-block; text-align:left; font-size:16px; cursor:default; }
-      body #foreground #description a { color:#4E759A; text-decoration:none; }
-      body #foreground #sheet { margin:0 auto; padding-bottom:40px; border-top:0px solid #CCCCCC; border-bottom:0px solid #CCCCCC; color:#000000; background-color:white; }
-      body #foreground #sheet .section { width:900px; padding-top:0px; display:inline-block; text-align:left; font-family:Benton-Sans-Regular,Helvetica,sans-serif; font-size:14px; }
-      body #foreground #sheet .section table { width:100%; }
-      body #foreground #sheet .section h2 { border-bottom:1px solid #CCCCCC; font-family:Benton-Sans-Light,Helvetica,sans-serif; color:#888888; }
-      body #foreground #sheet .section ul { list-style:none; padding:0px; margin:0; }
-      body #foreground #sheet .section li { padding-left:1.5em; text-indent:-1em; }
-      body #foreground #sheet .section li:before { content:"-- "; color:#888888; font-family:"Arial",Sans-serif; }
-      body #foreground #sheet .section p { text-align:justify; }
-      body #foreground #sheet .section table { padding:5px; border-spacing:5px; font-size:12px; }
-      body #foreground #sheet .section table td { padding:2px 10px 10px 10px; }
-      body #foreground #sheet .section a { color:#4E759A; text-decoration:none; }
-      body #foreground #sheet .section a:hover { text-decoration:underline; }
-      body #foreground #footer { width:900px; height:0px; padding-top:15px; display:inline-block; text-align:left; font-family:Benton-Sans-Regular,Helvetica,sans-serif; font-size:12px; }
-      body #foreground #footer a { color:#FFFFFF; text-decoration:none; }
-      body #foreground #footer a:hover { text-decoration:underline; }
+      body { margin:20px; }
+      .container { margin-bottom:30px; }
+      @media (min-width:992px) {
+        body { padding-top:46px; }
+        .container { margin-bottom:60px; }
+      }
+      h1 { font-size:36px; cursor:default; }
+      .lead { margin-bottom:50px; font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:16px; cursor:default; }
+      h2 { border-bottom:1px solid #CCCCCC; font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:24px; font-weight:bold; color:#888888; }
+      p { text-align:justify; font-family:Benton-Sans-Regular,Helvetica,sans-serif; color:#000000; }
+      ul { margin:20px 20px 0px 20px; font-family:Benton-Sans-Regular,Helvetica,sans-serif; color:#000000; }
+      li { padding:10px 0px; }
+      table { width:100%; margin:20px 10px 0px 10px; border-spacing:5px; font-family:Benton-Sans-Regular,Helvetica,sans-serif; }
+      td { padding:2px 10px 10px 10px; }
+      @media (max-width:525px) { table { font-size:8px; } td { padding:2px 2px 2px 2px; } }
+      .text { margin:20px 0px 0px 0px; }
+      a { color:#4E759A; text-decoration:none; }
     </style>
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
     ga('create', 'UA-89848325-2', 'auto');
     ga('send', 'pageview');
     </script>
-    <base target="_parent">
   </head>
   <body>
-    <div id="foreground">
-      <div id="title">Accessible and Scalable<br/>Secure Multi-Party Computation</div>
-      <br/>
-      <div id="description">
-        We are developing <a href="https://github.com/multiparty">open-source libraries and systems</a> that enable the implementation and deployment of applications that employ secure multi-party computation in accessible and scalable ways. This page contains links to recent publications and other relevant articles.
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="mt-5">Accessible and Scalable<br/>Secure Multi-Party Computation</h1>
+          <p class="lead">
+            We are developing <a href="https://github.com/multiparty">open-source libraries and systems</a> that enable the implementation and deployment of applications that employ secure multi-party computation in accessible and scalable ways. This page contains links to recent publications and other relevant articles.
+          </p>
+        </div>
       </div>
-      <div id="sheet">
-        <br/>
-        <div class="section">
+      <div class="row">
+        <div class="col-sm-12">
           <h2>Publications and Reports</h2>
-          <table>
-            <tr>
-              <td>
-                <b><a href="http://cs-people.bu.edu/lapets/resource/mpc-fcad.pdf">Federated Code Auditing and Delivery for MPC</a>.</b>
-                <br/>Frederick Jansen, Kinan Dak Albab, Andrei Lapets, and Mayank Varia.
-                <br/>Proceedings of <a href="http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=63818&copyownerid=98836">SSS 2017: 19th Annual International Symposium on Stabilization, Safety, and Security of Distributed Systems</a>.
-                Boston, MA, USA. November 2017.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="https://eprint.iacr.org/2017/803.pdf">Role-Based Ecosystem Model for Design, Development, and Deployment of Secure Multi-Party Data Analytics Applications</a>.</b>
-                <br/>Andrei Lapets, Mayank Varia, Azer Bestavros, and Frederick Jansen.
-                <br/>Cryptology ePrint Archive, Report 2017/803. August 2017.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b>Maintaining Usability While Enhancing Security: Deploying A Web Service for Private Data Aggregation.</b>
-                <br/>Andrei Lapets, Nikolaj Volgushev, Azer Bestavros, Frederick Jansen, Mayank Varia, Rose Kelly, and Shannon Roberts.
-                <br/>Under review.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://cs-people.bu.edu/lapets/resource/mpc-network.pdf">Scalable Secure Multi-Party Network Vulnerability Analysis via Symbolic Optimization</a>.</b>
-                <br/>Kinan Dak Albab, Rawane Issa, Andrei Lapets, Azer Bestavros, and Nikolaj Volgushev.
-                <br/>Proceedings of <a href="http://wtmc.info/">WTMC 2017: The 2nd International Workshop on Traffic Measurements for Cybersecurity</a>.
+          <ul class="list-unstyled">
+            <li>
+              <b><a href="http://cs-people.bu.edu/lapets/resource/mpc-fcad.pdf">Federated Code Auditing and Delivery for MPC</a>.</b>
+              <br/>Frederick Jansen, Kinan Dak Albab, Andrei Lapets, and Mayank Varia.
+              <br/>Proceedings of <a href="http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=63818&copyownerid=98836">SSS 2017: 19th Annual International Symposium on Stabilization, Safety, and Security of Distributed Systems</a>.
+              Boston, MA, USA. November 2017.
+            </li>
+            <li>
+              <b><a href="https://eprint.iacr.org/2017/803.pdf">Role-Based Ecosystem Model for Design, Development, and Deployment of Secure Multi-Party Data Analytics Applications</a>.</b>
+              <br/>Andrei Lapets, Mayank Varia, Azer Bestavros, and Frederick Jansen.
+              <br/>Cryptology ePrint Archive, Report 2017/803. August 2017.
+            </li>
+            <li>
+              <b>Maintaining Usability While Enhancing Security: Deploying A Web Service for Private Data Aggregation.</b>
+              <br/>Andrei Lapets, Nikolaj Volgushev, Azer Bestavros, Frederick Jansen, Mayank Varia, Rose Kelly, and Shannon Roberts.
+              <br/>Under review.
+            </li>
+            <li>
+              <b><a href="http://cs-people.bu.edu/lapets/resource/mpc-network.pdf">Scalable Secure Multi-Party Network Vulnerability Analysis via Symbolic Optimization</a>.</b>
+              <br/>Kinan Dak Albab, Rawane Issa, Andrei Lapets, Azer Bestavros, and Nikolaj Volgushev.
+            <br/>Proceedings of <a href="http://wtmc.info/">WTMC 2017: The 2nd International Workshop on Traffic Measurements for Cybersecurity</a>.
                 San Jose, CA, USA. May 2017.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b>Design and Deployment of Usable, Scalable MPC.</b>
-                <br/>Azer Bestavros, Andrei Lapets, Frederick Jansen, Mayank Varia, Nikolaj Volgushev, Malte Schwarzkopf.
-                <br/>Presented at <a href="http://www.multipartycomputation.com/tpmpc-2017">TPMPC 2017: Theory and Practice of Multi-Party Computation Workshop</a>.
-                Bristol, UK. April 2017.
-                <br/>Best presentation award.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://cacm.acm.org/magazines/2017/2/212427-user-centric-distributed-solutions-for-privacy-preserving-analytics/fulltext">User-Centric Distributed Solutions for Privacy-Preserving Analytics</a>.</b>
-                <br/>Azer Bestavros, Andrei Lapets, and Mayank Varia.
-                <br/><i>Communications of the ACM</i>, <b>60</b>(2):37-39, 2017.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://www.cs.bu.edu/techreports/pdf/2016-008-mpc-lightweight-web-app.pdf">Secure Multi-Party Computation for Analytics Deployed as a Lightweight Web Application</a>.</b>
-                <br/>Andrei Lapets, Nikolaj Volgushev, Azer Bestavros, Frederick Jansen, and Mayank Varia.
-                <br/>Presented at IEEE SecDev 2016: Security Innovation in Design and Development.
-                Boston, MA, USA. November 2016.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://eprint.iacr.org/2016/883.pdf">DEMO: Integrating MPC in Big Data Workflows</a>.</b>
-                <br/>Nikolaj Volgushev, Malte Schwarzkopf, Andrei Lapets, Mayank Varia, and Azer Bestavros.
-                <br/>Proceedings of CCS 2016: The 23rd ACM SIGSAC Conference on Computer and Communications Security.
-                Vienna, Austria. October 2016.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://www.cs.bu.edu/techreports/pdf/2015-011-integrating-mpc-and-mr.pdf">Programming Support for an Integrated Multi-Party Computation and MapReduce Infrastructure</a>.</b>
-                <br/>Nikolaj Volgushev, Andrei Lapets, and Azer Bestavros.
-                <br/>Proceedings of HotWeb 2015: The Third IEEE Workshop on Hot Topics in Web Systems and Technologies.
-                Washington, D.C., USA. November 2015.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://www.cs.bu.edu/techreports/pdf/2015-010-scather.pdf">Scather: Programming with Multi-party Computation and MapReduce</a>.</b>
-                <br/>Nikolaj Volgushev, Andrei Lapets, and Azer Bestavros.
-                <br/>Technical Report BUCS-TR-2015-010, CS Dept., Boston University, August 2015.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://www.cs.bu.edu/techreports/pdf/2015-009-mpc-compensation.pdf">Web-based Multi-Party Computation with Application to Anonymous Aggregate Compensation Analytics</a>.</b>
-                <br/>Andrei Lapets, Eric Dunton, Kyle Holzinger, Frederick Jansen, and Azer Bestavros.
-                <br/>Technical Report BUCS-TR-2015-009, CS Dept., Boston University, August 2015.
-              </td>
-            </tr>
-          </table>
+            </li>
+            <li>
+              <b>Design and Deployment of Usable, Scalable MPC.</b>
+              <br/>Azer Bestavros, Andrei Lapets, Frederick Jansen, Mayank Varia, Nikolaj Volgushev, Malte Schwarzkopf.
+              <br/>Presented at <a href="http://www.multipartycomputation.com/tpmpc-2017">TPMPC 2017: Theory and Practice of Multi-Party Computation Workshop</a>.
+              Bristol, UK. April 2017.
+              <br/>Best presentation award.
+            </li>
+            <li>
+              <b><a href="http://cacm.acm.org/magazines/2017/2/212427-user-centric-distributed-solutions-for-privacy-preserving-analytics/fulltext">User-Centric Distributed Solutions for Privacy-Preserving Analytics</a>.</b>
+              <br/>Azer Bestavros, Andrei Lapets, and Mayank Varia.
+              <br/><i>Communications of the ACM</i>, <b>60</b>(2):37-39, 2017.
+            </li>
+            <li>
+              <b><a href="http://www.cs.bu.edu/techreports/pdf/2016-008-mpc-lightweight-web-app.pdf">Secure Multi-Party Computation for Analytics Deployed as a Lightweight Web Application</a>.</b>
+              <br/>Andrei Lapets, Nikolaj Volgushev, Azer Bestavros, Frederick Jansen, and Mayank Varia.
+              <br/>Presented at IEEE SecDev 2016: Security Innovation in Design and Development.
+              Boston, MA, USA. November 2016.
+            </li>
+            <li>
+              <b><a href="http://eprint.iacr.org/2016/883.pdf">DEMO: Integrating MPC in Big Data Workflows</a>.</b>
+              <br/>Nikolaj Volgushev, Malte Schwarzkopf, Andrei Lapets, Mayank Varia, and Azer Bestavros.
+              <br/>Proceedings of CCS 2016: The 23rd ACM SIGSAC Conference on Computer and Communications Security.
+              Vienna, Austria. October 2016.
+            </li>
+            <li>
+              <b><a href="http://www.cs.bu.edu/techreports/pdf/2015-011-integrating-mpc-and-mr.pdf">Programming Support for an Integrated Multi-Party Computation and MapReduce Infrastructure</a>.</b>
+              <br/>Nikolaj Volgushev, Andrei Lapets, and Azer Bestavros.
+              <br/>Proceedings of HotWeb 2015: The Third IEEE Workshop on Hot Topics in Web Systems and Technologies.
+              Washington, D.C., USA. November 2015.
+            </li>
+            <li>
+              <b><a href="http://www.cs.bu.edu/techreports/pdf/2015-010-scather.pdf">Scather: Programming with Multi-party Computation and MapReduce</a>.</b>
+              <br/>Nikolaj Volgushev, Andrei Lapets, and Azer Bestavros.
+              <br/>Technical Report BUCS-TR-2015-010, CS Dept., Boston University, August 2015.
+            </li>
+            <li>
+              <b><a href="http://www.cs.bu.edu/techreports/pdf/2015-009-mpc-compensation.pdf">Web-based Multi-Party Computation with Application to Anonymous Aggregate Compensation Analytics</a>.</b>
+              <br/>Andrei Lapets, Eric Dunton, Kyle Holzinger, Frederick Jansen, and Azer Bestavros.
+              <br/>Technical Report BUCS-TR-2015-009, CS Dept., Boston University, August 2015.
+            </li>
+          </ul>
         </div>
-        <br/>
-        <div class="section">
-          <a id="2016spring"></a>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
           <h2>Other Reports and Coverage</h2>
-          <table>
-            <tr>
-              <td>
-                <b><a href="http://world.honda.com/news/2017/c170516eng.html/">Honda Begins Joint Research with Boston University in Information Security for Artificial Intelligence</a>.</b>
-                <br/>Honda World News.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://www.bu.edu/today/2017/tackling-wage-gap-with-code/">Tackling the Wage Gap with Code</a>.</b>
-                <br/>Joel Brown. BU Today.
-              </td>
-            </tr>
-            <!--tr>
-              <td>
-                <b><a href="http://www.bu.edu/today/2016/gender-pay-equity/">Calculating Gender Pay Equity</a>.</b>
-                <br/>Andrew Thurston. BU Today.
-              </td>
-            </tr-->
-            <tr>
-              <td>
-                <b><a href="http://www.wbur.org/onpoint/2016/03/30/gender-gap-pay-gap-boston-amazon">Will Data Help Close the Gender Pay Gap?</a></b>
-                <br/>Tom Ashbrook. NPR OnPoint (radio show), WBUR 90.9.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://www.bu.edu/cas/magazine/spring16/calculating-gender-pay-equity/">Calculating Gender Pay Equity</a></b>
-                <br/>Andrew Thurston. Arts &amp; Sciences.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b><a href="http://www.bu.edu/today/2015/computational-thinking-breaks-a-logjam/">Computational Thinking Breaks a Logjam</a>.</b>
-                <br/>Rich Barlow. BU Today.
-              </td>
-            </tr>
-          </table>
+          <ul class="list-unstyled">
+            <li>
+              <b><a href="http://world.honda.com/news/2017/c170516eng.html/">Honda Begins Joint Research with Boston University in Information Security for Artificial Intelligence</a>.</b>
+              <br/>Honda World News.
+            </li>
+            <li>
+              <b><a href="http://www.bu.edu/today/2017/tackling-wage-gap-with-code/">Tackling the Wage Gap with Code</a>.</b>
+              <br/>Joel Brown. BU Today.
+            </li>
+            <!--li>
+              <b><a href="http://www.bu.edu/today/2016/gender-pay-equity/">Calculating Gender Pay Equity</a>.</b>
+              <br/>Andrew Thurston. BU Today.
+            </li-->
+            <li>
+              <b><a href="http://www.wbur.org/onpoint/2016/03/30/gender-gap-pay-gap-boston-amazon">Will Data Help Close the Gender Pay Gap?</a></b>
+              <br/>Tom Ashbrook. NPR OnPoint (radio show), WBUR 90.9.
+            </li>
+            <li>
+              <b><a href="http://www.bu.edu/cas/magazine/spring16/calculating-gender-pay-equity/">Calculating Gender Pay Equity</a></b>
+              <br/>Andrew Thurston. Arts &amp; Sciences.
+            </li>
+            <li>
+              <b><a href="http://www.bu.edu/today/2015/computational-thinking-breaks-a-logjam/">Computational Thinking Breaks a Logjam</a>.</b>
+              <br/>Rich Barlow. BU Today.
+            </li>
+          </ul>
         </div>
-        <br/>
-        <div class="section">
-          <a id="overview"></a>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
           <h2>Current and Past Collaborators</h2>
           <table>
             <tr>
@@ -275,31 +243,36 @@
             </tr>
           </table>
         </div>
-        <br/>
-        <div class="section">
-          <a id="acknowledgments"></a>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
           <h2>Acknowledgments</h2>
-          <p>
-            This effort exists thanks to the support and cooperation of <a href="http://www.bu.edu">Boston University</a>, including the <a href="http://www.bu.edu/cs/">Department of Computer Science</a>, the <a href="http://www.bu.edu/hic">Hariri Institute for Computing</a>, the <a href="http://sail.bu.edu">Software &amp; Application Innovation Lab</a>, the <a href="https://www.bu.edu/macs/">MACS</a> project, the <a href="https://info.massopencloud.org/">Massachusetts Open Cloud</a>, and the <a href="http://www.bu.edu/ioc/">Initiative on Cities</a>.
-          </p>
-          <p>
-            We also thank the <a href="https://www.boston.gov/">City of Boston</a> and the <a href="http://www.bostonwomensworkforcecouncil.com/">Boston Women's Workforce Council</a>.
-          </p>
-          <p>
-            This work is partially supported by the National Science Foundation under Grants
-            #<a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1430145">1430145</a> (<a href="http://www.bu.edu/hic/research/scope/">SCOPE</a>),
-            #<a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1414119">1414119</a> (<a href="http://www.bu.edu/macs/">MACS</a>),
-            #<a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1718135">1718135</a>, and
-            #<a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1739000">1739000</a>.
-            Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
-          </p>
-          <p>
-            This work is also supported in part by the <a href="http://www.honda-ri.com/">Honda Research Institutes</a>.
-          </p>
+          <div class="text">
+            <p>
+              This effort exists thanks to the support and cooperation of <a href="http://www.bu.edu">Boston University</a>, including the <a href="https://www.bu.edu/cs/">Department of Computer Science</a>, the <a href="https://www.bu.edu/hic">Hariri Institute for Computing</a>, the <a href="http://sail.bu.edu">Software &amp; Application Innovation Lab</a>, the <a href="https://www.bu.edu/macs/">MACS</a> project, the <a href="https://info.massopencloud.org/">Massachusetts Open Cloud</a>, and the <a href="https://www.bu.edu/ioc/">Initiative on Cities</a>.
+            </p>
+            <p>
+              We also thank the <a href="https://www.boston.gov/">City of Boston</a> and the <a href="http://www.bostonwomensworkforcecouncil.com/">Boston Women's Workforce Council</a>.
+            </p>
+            <p>
+              This work is partially supported by the National Science Foundation under Grants
+              #<a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1430145">1430145</a> (<a href="https://www.bu.edu/hic/research/scope/">SCOPE</a>),
+              #<a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1414119">1414119</a> (<a href="https://www.bu.edu/macs/">MACS</a>),
+              #<a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1718135">1718135</a>, and
+              #<a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1739000">1739000</a>.
+              Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+            </p>
+            <p>
+              This work is also supported in part by the <a href="http://www.honda-ri.com/">Honda Research Institutes</a>.
+            </p>
+          </div>
         </div>
-      </div><!-- /#sheet -->
-      <div id="footer">
-      </div><!-- /#footer -->
-    </div><!-- /#foreground -->
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+            crossorigin="anonymous">
+    </script>
   </body>
 </html>

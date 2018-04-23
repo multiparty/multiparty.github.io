@@ -49,32 +49,50 @@
         font-weight: 400;
       }
       html, body { height:100%; margin:0; color:#555555; font-family:Benton-Sans-Light,Helvetica,sans-serif; }
-      body { margin:20px; }
-      .container { margin-bottom:30px; }
-      @media (min-width:992px) {
-        body { padding-top:46px; }
-        .container { margin-bottom:60px; }
+      body { margin:20px 0px 20px 0px; padding-top:70px; }
+      .content { margin-bottom:60px; }
+      .content .anchor { display:block; height:50px; margin-top:-50px; visibility:hidden; }
+      .content h1 { font-size:36px; cursor:default; }
+      .content .lead-intro { font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:16px; cursor:default; }
+      .content .lead-contact { margin-bottom:50px; font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:16px; cursor:default; }
+      .content h2 { border-bottom:1px solid #CCCCCC; font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:24px; font-weight:bold; color:#888888; }
+      .content h4 { display:inline-block; margin:20px 0px 0px 20px; border-bottom:1px solid #CCCCCC; }
+      .content p { text-align:justify; font-family:Benton-Sans-Regular,Helvetica,sans-serif; color:#000000; }
+      .content ul { margin:20px 20px 0px 20px; font-family:Benton-Sans-Regular,Helvetica,sans-serif; color:#000000; }
+      .content li { padding:10px 0px; }
+      .content table { width:100%; margin:10px 10px 0px 10px; border-spacing:5px; font-family:Benton-Sans-Regular,Helvetica,sans-serif; }
+      .content table td { min-width:160px; padding:2px 10px 10px 10px; }
+      .content table .td-end { width:100%; }
+      .content .text { margin:20px 0px 0px 0px; }
+      .content a { color:#4E759A; text-decoration:none; }
+      @media (max-width:992px) { /* Collapse navigation menu. */
+        .content { margin-bottom:30px; }
+        .content table .td-end { min-width:0px; }
+        .navbar-header { float:none; }
+        .navbar-left,.navbar-right { float:none !important; }
+        .navbar-toggle { display:block; }
+        .navbar-collapse { border-top:1px solid transparent; box-shadow:inset 0 1px 0 rgba(255,255,255,0.1); }
+        .navbar-fixed-top { top:0; border-width:0 0 1px; }
+        .navbar-collapse.collapse { display:none!important; }
+        .navbar-nav { float:none!important; margin-top:7.5px; }
+        .navbar-nav>li { float:none; }
+        .navbar-nav>li>a { padding-top:10px; padding-bottom:10px; }
+        .collapse.in{ display:block !important; }
       }
-      h1 { font-size:36px; cursor:default; }
-      .lead-intro { font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:16px; cursor:default; }
-      .lead-contact { margin-bottom:50px; font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:16px; cursor:default; }
-      h2 { border-bottom:1px solid #CCCCCC; font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:24px; font-weight:bold; color:#888888; }
-      p { text-align:justify; font-family:Benton-Sans-Regular,Helvetica,sans-serif; color:#000000; }
-      ul { margin:20px 20px 0px 20px; font-family:Benton-Sans-Regular,Helvetica,sans-serif; color:#000000; }
-      li { padding:10px 0px; }
-      table { width:100%; margin:20px 10px 0px 10px; border-spacing:5px; font-family:Benton-Sans-Regular,Helvetica,sans-serif; }
-      td { padding:2px 10px 10px 10px; }
-      .text { margin:20px 0px 0px 0px; }
+      @media (max-width:580px) {
+        .content table .td-end { display:none; }
+      }
       @media (max-width:525px) {
-        h1 { font-size:26px; }
-       .lead-intro { font-size:14px; line-height:18px; }
-       .lead-contact { font-size:14px; line-height:18px; }
-        li { line-height:18px; } 
-        table { font-size:8px; } 
-        td { padding:2px 2px 2px 2px; } 
-        .text { line-height:18px; }
+        .content h1 { font-size:26px; }
+        .content h4 { margin-left:10px; }
+        .content .lead-intro { font-size:14px; line-height:18px; }
+        .content .lead-contact { font-size:14px; line-height:18px; }
+        .content li { line-height:18px; }
+        .content table { font-size:12px; }
+        .content table td { min-width:0px; padding:2px 2px 2px 2px; }
+        .content table .td-end { width:0px; }
+        .content .text { line-height:18px; }
       }
-      a { color:#4E759A; text-decoration:none; }
     </style>
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -83,10 +101,39 @@
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
     ga('create', 'UA-89848325-2', 'auto');
     ga('send', 'pageview');
+    $(document).on('click','.navbar-collapse.in',function(e) {
+      if($(e.target).is('a')) {
+        $(this).collapse('hide');
+      }
+    });
     </script>
   </head>
   <body>
-    <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">multiparty.org</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#software">Software</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#presentations">Presentations</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#members">Members</a></li>
+            <li><a href="#acknowledgments">Acknowledgments</a></li>
+            <li><a href="mailto:info@multiparty.org">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container content">
       <div class="row">
         <div class="col-sm-12">
           <h1 class="mt-5">Accessible and Scalable<br/>Secure Multi-Party Computation</h1>
@@ -98,6 +145,7 @@
           </p>
         </div>
       </div>
+      <span id="software" class="anchor"></span>
       <div class="row">
         <div class="col-sm-12">
           <h2>Libraries and Frameworks</h2>
@@ -113,6 +161,7 @@
           </ul>
         </div>
       </div>
+      <span id="publications" class="anchor"></span>
       <div class="row">
         <div class="col-sm-12">
           <h2>Publications and Reports</h2>
@@ -175,6 +224,7 @@
           </ul>
         </div>
       </div>
+      <span id="presentations" class="anchor"></span>
       <div class="row">
         <div class="col-sm-12">
           <h2>Talks and Presentations</h2>
@@ -201,6 +251,7 @@
           </ul>
         </div>
       </div>
+      <span id="news" class="anchor"></span>
       <div class="row">
         <div class="col-sm-12">
           <h2>Other News, Reports, and Coverage</h2>
@@ -236,75 +287,70 @@
           </ul>
         </div>
       </div>
+      <span id="members" class="anchor"></span>
       <div class="row">
         <div class="col-sm-12">
           <h2>Current and Past Collaborators</h2>
+          <h4>Faculty</h4>
           <table>
             <tr>
-              <td>
-                <b><a href="https://cs-people.bu.edu/babman/">Kinan Dak Albab</a></b><br/>BU
-              </td>
-              <td>
-                <b><a href="https://www.cs.bu.edu/fac/canetti/">Ran Canetti</a></b><br/>BU
-              </td>
-              <td>
-                <b><a href="http://azer.bestavros.net/">Azer Bestavros</a></b><br/>BU
-              </td>
-              <td>
-                <b>Eric Dunton</b><br/>BU
-              </td>
-              <td>
-                <b>Ben Getchell</b><br/>BU
-              </td>
+              <td><b><a href="http://azer.bestavros.net/">Azer Bestavros</a></b><br/>BU</td>
+              <td><b><a href="https://cs-people.bu.edu/lapets/">Andrei Lapets</a></b><br/>BU</td>
+              <td><b><a href="http://www.mvaria.com/">Mayank Varia</a></b><br/>BU</td>
+              <td class="td-end"></td>
             </tr>
             <tr>
-              <td>
-                <b><a href="https://kyleholzinger.github.io/">Kyle Holzinger</a></b><br/>BU
-              </td>
-              <td>
-                <b><a href="https://cs-people.bu.edu/ra1issa/">Rawane Issa</a></b><br/>BU
-              </td>
-              <td>
-                <b><a href="http://prettyplease.me/">Frederick Jansen</a></b><br/>BU
-              </td>
-              <td>
-                <b>Rose Kelly</b><br/>UMass
-              </td>
-              <td>
-                <b><a href="https://cs-people.bu.edu/lapets/">Andrei Lapets</a></b><br/>BU
-              </td>
+              <td><b><a href="https://www.cs.bu.edu/fac/canetti/">Ran Canetti</a></b><br/>BU</td>
+              <td><b><a href="https://people.umass.edu/scroberts/">Shannon Roberts</a></b><br/>UMass</td>
+              <td></td>
+              <td class="td-end"></td>
+            </tr>
+          </table>
+          <h4>Researchers and Software Engineers</h4>
+          <table>
+            <tr>
+              <td><b><a href="http://prettyplease.me/">Frederick Jansen</a></b><br/>BU</td>
+              <td><b>Lucy Qin</b><br/>BU</td>
+              <td><b>Ben Getchell</b><br/>BU</td>
+              <td class="td-end"></td>
             </tr>
             <tr>
-              <td>
-                <b>Lucy Qin</b><br/>BU
-              </td>
-              <td>
-                <b><a href="https://people.umass.edu/scroberts/">Shannon Roberts</a></b><br/>UMass
-              </td>
-              <td>
-                <b><a href="https://people.csail.mit.edu/malte/">Malte Schwarzkopf</a></b><br/>MIT
-              </td>
-              <td>
-                <b>San Tran</b><br/>BU
-              </td>
-              <td>
-                <b><a href="http://www.mvaria.com/">Mayank Varia</a></b><br/>BU
-              </td>
+              <td><b><a href="https://cs-people.bu.edu/nikolaj/">Nikolaj Volgushev</a></b><br/>Alexandra Institute</td>
+              <td><b><a href="https://people.csail.mit.edu/malte/">Malte Schwarzkopf</a></b><br/>MIT</td>
+              <td><b>Shreya Pandit</b><br/>BU</td>
+              <td class="td-end"></td>
             </tr>
             <tr>
-              <td>
-                <b><a href="https://cs-people.bu.edu/nikolaj/">Nikolaj Volgushev</a></b><br/>Alexandra Institute
-              </td>
-              <td>
-                <b>Jacqueline You</a></b><br/>BU
-              </td>
-              <td>
-                <b>Justin Chen</a></b><br/>BU
-              </td>
+              <td><b>San Tran</b><br/>BU</td>
+              <td></td>
+              <td></td>
+              <td class="td-end"></td>
+            </tr>
+          </table>
+          <h4>Students</h4>
+          <table>
+            <tr>
+              <td><b><a href="https://cs-people.bu.edu/babman/">Kinan Dak Albab</a></b><br/>BU</td>
+              <td><b><a href="https://cs-people.bu.edu/ra1issa/">Rawane Issa</a></b><br/>BU</td>
+              <td><b>Justin Chen</a></b><br/>BU</td>
+              <td class="td-end"></td>
+            </tr>
+            <tr>
+              <td><b>Jacqueline You</a></b><br/>BU</td>
+              <td><b>Mike Gajda</a></b><br/>BU</td>
+              <td><b>Rose Kelly</b><br/>UMass</td>
+              <td class="td-end"></td>
+            </tr>
+            <tr>
+              <td><b>Eric Dunton</b><br/>BU</td>
+              <td><b><a href="https://kyleholzinger.github.io/">Kyle Holzinger</a></b><br/>BU</td>
+              <td></td>
+              <td class="td-end"></td>
             </tr>
           </table>
         </div>
       </div>
+      <span id="acknowledgments" class="anchor"></span>
       <div class="row">
         <div class="col-sm-12">
           <h2>Acknowledgments</h2>

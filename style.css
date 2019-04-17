@@ -1,57 +1,20 @@
-@font-face {
-  font-family: "Benton-Sans-Light";
-  src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Light/1d3e1be9-e2ca-44c3-b674-7228a7c97407-2.eot");
-  src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Light/1d3e1be9-e2ca-44c3-b674-7228a7c97407-2.eot?") format("embedded-opentype"),
-       url("https://www.bu.edu/cdn/fonts/Benton-Sans-Light/1d3e1be9-e2ca-44c3-b674-7228a7c97407-3.woff") format("woff"),
-       url("https://www.bu.edu/cdn/fonts/Benton-Sans-Light/1d3e1be9-e2ca-44c3-b674-7228a7c97407-1.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Benton-Sans-Regular";
-  src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Regular/019c3a13-b3d7-4c5a-be27-07a8334a43e6-2.eot");
-  src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Regular/019c3a13-b3d7-4c5a-be27-07a8334a43e6-2.eot?") format("embedded-opentype"),
-       url("https://www.bu.edu/cdn/fonts/Benton-Sans-Regular/019c3a13-b3d7-4c5a-be27-07a8334a43e6-3.woff") format("woff"),
-       url("https://www.bu.edu/cdn/fonts/Benton-Sans-Regular/019c3a13-b3d7-4c5a-be27-07a8334a43e6-1.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Benton-Sans-Bold";
-  src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Bold/d4a4a960-2cf2-430e-8b13-cbf6f261ddb9-2.eot");
-  src: url("https://www.bu.edu/cdn/fonts/Benton-Sans-Bold/d4a4a960-2cf2-430e-8b13-cbf6f261ddb9-2.eot?") format("embedded-opentype"),
-       url("https://www.bu.edu/cdn/fonts/Benton-Sans-Bold/d4a4a960-2cf2-430e-8b13-cbf6f261ddb9-3.woff") format("woff"),
-       url("https://www.bu.edu/cdn/fonts/Benton-Sans-Bold/d4a4a960-2cf2-430e-8b13-cbf6f261ddb9-1.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Veneer-Extras";
-  src: url("https://www.bu.edu/cdn/fonts/Veneer-Extras/2B35AA_1_0.eot");
-  src: url("https://www.bu.edu/cdn/fonts/Veneer-Extras/2B35AA_1_0.eot?") format("embedded-opentype"),
-       url("https://www.bu.edu/cdn/fonts/Veneer-Extras/2B35AA_1_0.woff") format("woff"),
-       url("https://www.bu.edu/cdn/fonts/Veneer-Extras/2B35AA_1_0.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-}
-html, body { height:100%; margin:0; color:#555555; font-family:Benton-Sans-Light,Helvetica,sans-serif; }
+html, body { height:100%; margin:0; color:#555555; font-family:"Roboto",Helvetica,sans-serif; }
 body { margin:20px 0px 20px 0px; padding-top:70px; }
 .content { margin-bottom:60px; }
 .content .anchor { display:block; height:50px; margin-top:-50px; visibility:hidden; }
-.content h1 { font-size:36px; cursor:default; }
-.content .lead-intro { font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:16px; cursor:default; }
-.content .lead-contact { margin-bottom:50px; font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:16px; cursor:default; }
-.content h2 { border-bottom:1px solid #CCCCCC; font-family:Benton-Sans-Light,Helvetica,sans-serif; font-size:24px; font-weight:bold; color:#888888; }
+.content h1 { font-size:36px; font-weight:300; color:#888888; cursor:default; }
+.content .lead-intro { font-size:16px; font-weight:300; cursor:default;}
+.content h2 { border-bottom:1px solid #CCCCCC; font-size:24px; font-weight:300; color:#888888; }
 .content h4 { display:inline-block; margin:20px 0px 0px 20px; border-bottom:1px solid #CCCCCC; }
-.content p { text-align:justify; font-family:Benton-Sans-Regular,Helvetica,sans-serif; color:#000000; }
-.content ul { margin:20px 20px 0px 20px; font-family:Benton-Sans-Regular,Helvetica,sans-serif; color:#000000; }
+.content p { text-align:justify; color:#000000; }
+.content ul { margin:20px 20px 0px 20px; color:#000000; }
 .content li { padding:10px 0px; }
-.content table { width:100%; margin:10px 10px 0px 10px; border-spacing:5px; font-family:Benton-Sans-Regular,Helvetica,sans-serif; }
+.content table { width:100%; margin:10px 10px 0px 10px; border-spacing:5px; }
 .content table td { min-width:160px; padding:2px 10px 10px 10px; }
 .content table .td-end { width:100%; }
 .content .text { margin:20px 0px 0px 0px; }
 .content a { color:#4E759A; text-decoration:none; }
-.navbar-nav>li>a { font-family:Benton-Sans-Regular,Helvetica,sans-serif; }
+.navbar-nav>li>a { }
 @media (max-width:992px) { /* Collapse navigation menu. */
   .content { margin-bottom:30px; }
   .content table .td-end { min-width:0px; }
@@ -73,7 +36,6 @@ body { margin:20px 0px 20px 0px; padding-top:70px; }
   .content h1 { font-size:26px; }
   .content h4 { margin-left:10px; }
   .content .lead-intro { font-size:14px; line-height:18px; }
-  .content .lead-contact { font-size:14px; line-height:18px; }
   .content li { line-height:18px; }
   .content table { font-size:12px; }
   .content table td { min-width:0px; padding:2px 2px 2px 2px; }
